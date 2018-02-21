@@ -30,6 +30,7 @@ namespace IdentityServer4Tutorial
             return WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .UseConfiguration(config)
+                //.UseKestrel(options => options.ConfigureEndpoints())
                 .Build();
         }
     }

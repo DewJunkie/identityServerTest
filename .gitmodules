@@ -1,0 +1,3 @@
+[submodule "IdentityServer4.Quickstart.UI"]
+	path = IdentityServer4.Quickstart.UI
+	url = https://github.com/IdentityServer/IdentityServer4.Quickstart.UI.git

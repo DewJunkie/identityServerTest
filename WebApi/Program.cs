@@ -14,12 +14,27 @@ namespace WebApi
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine(String.Join(Environment.NewLine, args));
+
             BuildWebHost(args).Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
+        public static IWebHost BuildWebHost(string[] args)
+        {
+            Console.WriteLine(String.Join(Environment.NewLine, args));
+
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .AddCommandLine(args)
                 .Build();
+
+            return WebHost
+                .CreateDefaultBuilder(args)
+                .UseStartup<Startup>()
+                .UseConfiguration(config)
+                //.UseUrls(args[1])
+                .Build();
+        }
     }
 }
