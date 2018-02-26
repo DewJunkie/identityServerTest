@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using IdentityServer4.EntityFramework.DbContexts;
+using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -31,8 +33,8 @@ namespace IdentityServerWithAspNetIdentity
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-                options.UseSqlite(connectionString));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                //options.UseSqlite(connectionString));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -51,14 +53,16 @@ namespace IdentityServerWithAspNetIdentity
                     .AddConfigurationStore(options =>
                      {
                          options.ConfigureDbContext = builder =>
-                             builder.UseSqlite(connectionString,
+                             //builder.UseSqlite(connectionString,
+                             builder.UseSqlServer(connectionString,
                                                   sql => sql.MigrationsAssembly(migrationsAssembly));
                      })
                      // this adds the operational data from DB (codes, tokens, consents)
                     .AddOperationalStore(options =>
                      {
                          options.ConfigureDbContext = builder =>
-                             builder.UseSqlite(connectionString,
+                             //builder.UseSqlite(connectionString,
+                             builder.UseSqlServer(connectionString,
                                                   sql => sql.MigrationsAssembly(migrationsAssembly));
 
                          // this enables automatic token cleanup. this is optional.
@@ -70,6 +74,9 @@ namespace IdentityServerWithAspNetIdentity
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            // this will do the initial DB population
+            InitializeDatabase(app);
+
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
@@ -92,6 +99,43 @@ namespace IdentityServerWithAspNetIdentity
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        private void InitializeDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
+
+                var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
+                context.Database.Migrate();
+                if (!context.Clients.Any())
+                {
+                    foreach (var client in Config.GetClients())
+                    {
+                        context.Clients.Add(client.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+
+                if (!context.IdentityResources.Any())
+                {
+                    foreach (var resource in Config.GetIdentityResources())
+                    {
+                        context.IdentityResources.Add(resource.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+
+                if (!context.ApiResources.Any())
+                {
+                    foreach (var resource in Config.GetApiResources())
+                    {
+                        context.ApiResources.Add(resource.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+            }
         }
     }
 }
