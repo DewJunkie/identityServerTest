@@ -1,0 +1,173 @@
+2018-02-26 13:22:06.690 -08:00 [DBG] Using idsrv as default scheme for authentication
+2018-02-26 13:22:06.714 -08:00 [DBG] Using idsrv as default scheme for sign-in
+2018-02-26 13:22:06.714 -08:00 [DBG] Using idsrv as default scheme for sign-out
+2018-02-26 13:22:06.714 -08:00 [DBG] Using idsrv as default scheme for challenge
+2018-02-26 13:22:06.714 -08:00 [DBG] Using idsrv as default scheme for forbid
+2018-02-26 13:24:33.672 -08:00 [DBG] Using idsrv as default scheme for authentication
+2018-02-26 13:24:33.719 -08:00 [DBG] Using idsrv as default scheme for sign-in
+2018-02-26 13:24:33.719 -08:00 [DBG] Using idsrv as default scheme for sign-out
+2018-02-26 13:24:33.719 -08:00 [DBG] Using idsrv as default scheme for challenge
+2018-02-26 13:24:33.719 -08:00 [DBG] Using idsrv as default scheme for forbid
+2018-02-26 13:24:34.039 -08:00 [DBG] Starting token cleanup
+2018-02-26 13:25:17.369 -08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2018-02-26 13:25:17.374 -08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2018-02-26 13:25:17.374 -08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2018-02-26 13:25:17.379 -08:00 [DBG] Start discovery request
+2018-02-26 13:25:18.260 -08:00 [DBG] Found ["openid","profile","api1"] as all scopes in database
+2018-02-26 13:25:18.538 -08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2018-02-26 13:25:18.539 -08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2018-02-26 13:25:18.539 -08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2018-02-26 13:25:18.544 -08:00 [DBG] Start key discovery request
+2018-02-26 13:25:18.660 -08:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2018-02-26 13:25:18.664 -08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2018-02-26 13:25:18.664 -08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2018-02-26 13:25:18.670 -08:00 [DBG] Start authorize request
+2018-02-26 13:25:18.681 -08:00 [DBG] No user present in authorize request
+2018-02-26 13:25:18.686 -08:00 [DBG] Start authorize request protocol validation
+2018-02-26 13:25:18.974 -08:00 [DBG] mvc found in database: true
+2018-02-26 13:25:18.988 -08:00 [ERR] Invalid redirect_uri: http://localhost:5002/signin-oidc
+{
+  "ClientId": "mvc",
+  "ClientName": "MVC Client",
+  "AllowedRedirectUris": [
+    "http://localhost:5001/signin-oidc"
+  ],
+  "SubjectId": "anonymous",
+  "RequestedScopes": "",
+  "Raw": {
+    "client_id": "mvc",
+    "redirect_uri": "http://localhost:5002/signin-oidc",
+    "response_type": "code id_token",
+    "scope": "openid profile api1 offline_access",
+    "response_mode": "form_post",
+    "nonce": "636552771186003370.NjQzNWE2YjgtZTQzMy00OTAwLThkZDctN2YyOWFiZDNiYjY3NmM2MzA0MmItMzIxYS00MzRkLWE4YTAtNTVhZjM3ODk1NzI0",
+    "state": "CfDJ8IebgCzwq49JlmeT4SZmS4rvsRxxedCAQ4yIt451rrmX-hvadXSBWe8fz-zCJufJl9BD6XEzcqHEQQPKjXNC3mNAmULXVB2d0f_Ox5P-pBzBV0fFQqdodVRn0VbXiaG_Fl7QB1VZKywC7BoQ0860AetlvCd6vzBSBxF3gU5ml3qg1gXo0I0wxZBUMj5WaTzk6p3ymjvjRftjgTk3zLSwowTjU_y8Ncb97_1Z_OwIuLRgIC8PsYdMKZF3F0i-cRh9_ouAKDTiir7x4qkNxzpNogj1cjU8srI2EDQaweHPKdFGbxerKYE78KX17xdO3a58QSf-DHzyCzrCMSF5cQqWom4",
+    "x-client-SKU": "ID_NET",
+    "x-client-ver": "2.1.4.0"
+  }
+}
+2018-02-26 13:25:18.993 -08:00 [ERR] Request validation failed
+2018-02-26 13:25:18.994 -08:00 [INF] {
+  "ClientId": "mvc",
+  "ClientName": "MVC Client",
+  "AllowedRedirectUris": [
+    "http://localhost:5001/signin-oidc"
+  ],
+  "SubjectId": "anonymous",
+  "RequestedScopes": "",
+  "Raw": {
+    "client_id": "mvc",
+    "redirect_uri": "http://localhost:5002/signin-oidc",
+    "response_type": "code id_token",
+    "scope": "openid profile api1 offline_access",
+    "response_mode": "form_post",
+    "nonce": "636552771186003370.NjQzNWE2YjgtZTQzMy00OTAwLThkZDctN2YyOWFiZDNiYjY3NmM2MzA0MmItMzIxYS00MzRkLWE4YTAtNTVhZjM3ODk1NzI0",
+    "state": "CfDJ8IebgCzwq49JlmeT4SZmS4rvsRxxedCAQ4yIt451rrmX-hvadXSBWe8fz-zCJufJl9BD6XEzcqHEQQPKjXNC3mNAmULXVB2d0f_Ox5P-pBzBV0fFQqdodVRn0VbXiaG_Fl7QB1VZKywC7BoQ0860AetlvCd6vzBSBxF3gU5ml3qg1gXo0I0wxZBUMj5WaTzk6p3ymjvjRftjgTk3zLSwowTjU_y8Ncb97_1Z_OwIuLRgIC8PsYdMKZF3F0i-cRh9_ouAKDTiir7x4qkNxzpNogj1cjU8srI2EDQaweHPKdFGbxerKYE78KX17xdO3a58QSf-DHzyCzrCMSF5cQqWom4",
+    "x-client-SKU": "ID_NET",
+    "x-client-ver": "2.1.4.0"
+  }
+}
+2018-02-26 13:25:19.036 -08:00 [INF] {
+  "Name": "Token Issued Failure",
+  "Category": "Token",
+  "EventType": "Failure",
+  "Id": 2001,
+  "ClientId": "mvc",
+  "ClientName": "MVC Client",
+  "Endpoint": "Authorize",
+  "Scopes": "",
+  "Error": "unauthorized_client",
+  "ErrorDescription": "Invalid redirect_uri",
+  "ActivityId": "0HLBTBTACB7NJ:00000002",
+  "TimeStamp": "2018-02-26T21:25:19Z",
+  "ProcessId": 9004,
+  "LocalIpAddress": "127.0.0.1:15757",
+  "RemoteIpAddress": "::1"
+}
+2018-02-26 13:25:43.492 -08:00 [DBG] Using idsrv as default scheme for authentication
+2018-02-26 13:25:43.544 -08:00 [DBG] Using idsrv as default scheme for sign-in
+2018-02-26 13:25:43.544 -08:00 [DBG] Using idsrv as default scheme for sign-out
+2018-02-26 13:25:43.544 -08:00 [DBG] Using idsrv as default scheme for challenge
+2018-02-26 13:25:43.544 -08:00 [DBG] Using idsrv as default scheme for forbid
+2018-02-26 13:25:44.019 -08:00 [DBG] Starting token cleanup
+2018-02-26 13:25:58.081 -08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2018-02-26 13:25:58.086 -08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2018-02-26 13:25:58.086 -08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2018-02-26 13:25:58.090 -08:00 [DBG] Start discovery request
+2018-02-26 13:25:58.955 -08:00 [DBG] Found ["openid","profile","api1"] as all scopes in database
+2018-02-26 13:25:59.228 -08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2018-02-26 13:25:59.229 -08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2018-02-26 13:25:59.229 -08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2018-02-26 13:25:59.233 -08:00 [DBG] Start key discovery request
+2018-02-26 13:25:59.346 -08:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2018-02-26 13:25:59.350 -08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2018-02-26 13:25:59.350 -08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2018-02-26 13:25:59.355 -08:00 [DBG] Start authorize request
+2018-02-26 13:25:59.363 -08:00 [DBG] No user present in authorize request
+2018-02-26 13:25:59.367 -08:00 [DBG] Start authorize request protocol validation
+2018-02-26 13:25:59.706 -08:00 [DBG] mvc found in database: true
+2018-02-26 13:25:59.724 -08:00 [ERR] Invalid redirect_uri: http://localhost:5002/signin-oidc
+{
+  "ClientId": "mvc",
+  "ClientName": "MVC Client",
+  "AllowedRedirectUris": [
+    "http://localhost:5001/signin-oidc"
+  ],
+  "SubjectId": "anonymous",
+  "RequestedScopes": "",
+  "Raw": {
+    "client_id": "mvc",
+    "redirect_uri": "http://localhost:5002/signin-oidc",
+    "response_type": "code id_token",
+    "scope": "openid profile api1 offline_access",
+    "response_mode": "form_post",
+    "nonce": "636552771592891958.MWE0NmU1YTItNTc5YS00OGFhLTlmNmYtZTE5MTljYzhkMTgxOThhNDRhMTctMDQyMy00ZGI1LWExNjAtNjkyMjE5YWE1MWE2",
+    "state": "CfDJ8IebgCzwq49JlmeT4SZmS4pa46eGaH_2Kp3F970jTKEqkq81tPodBKWIsWeiK1IhcTC9YBrRlAKIksPHwHz84Et22S9LlooKM9QCrpPJ9XICUM1vMnh-yEjm0qma8DwEBKvKHJPJFjyKRg-bH8CesCu2LK9GMcNNJQp-CPEq2KfgXCMPeeHQkOd_MTAtG_5V0njxmE4ExcShWsey84xvLV1osqE-SHcs5y36jQalcjxeRQKs2XaPRuVtkIgDaPbfkkZC832m5xLLkA_Wrege_Ow5hWBLhjnWaKqsHw4M_QqHF9DY9fCmR3WlzGghcLaz1sk4VuIPuyWkPiGf7JcL3wI",
+    "x-client-SKU": "ID_NET",
+    "x-client-ver": "2.1.4.0"
+  }
+}
+2018-02-26 13:25:59.730 -08:00 [ERR] Request validation failed
+2018-02-26 13:25:59.732 -08:00 [INF] {
+  "ClientId": "mvc",
+  "ClientName": "MVC Client",
+  "AllowedRedirectUris": [
+    "http://localhost:5001/signin-oidc"
+  ],
+  "SubjectId": "anonymous",
+  "RequestedScopes": "",
+  "Raw": {
+    "client_id": "mvc",
+    "redirect_uri": "http://localhost:5002/signin-oidc",
+    "response_type": "code id_token",
+    "scope": "openid profile api1 offline_access",
+    "response_mode": "form_post",
+    "nonce": "636552771592891958.MWE0NmU1YTItNTc5YS00OGFhLTlmNmYtZTE5MTljYzhkMTgxOThhNDRhMTctMDQyMy00ZGI1LWExNjAtNjkyMjE5YWE1MWE2",
+    "state": "CfDJ8IebgCzwq49JlmeT4SZmS4pa46eGaH_2Kp3F970jTKEqkq81tPodBKWIsWeiK1IhcTC9YBrRlAKIksPHwHz84Et22S9LlooKM9QCrpPJ9XICUM1vMnh-yEjm0qma8DwEBKvKHJPJFjyKRg-bH8CesCu2LK9GMcNNJQp-CPEq2KfgXCMPeeHQkOd_MTAtG_5V0njxmE4ExcShWsey84xvLV1osqE-SHcs5y36jQalcjxeRQKs2XaPRuVtkIgDaPbfkkZC832m5xLLkA_Wrege_Ow5hWBLhjnWaKqsHw4M_QqHF9DY9fCmR3WlzGghcLaz1sk4VuIPuyWkPiGf7JcL3wI",
+    "x-client-SKU": "ID_NET",
+    "x-client-ver": "2.1.4.0"
+  }
+}
+2018-02-26 13:25:59.774 -08:00 [INF] {
+  "Name": "Token Issued Failure",
+  "Category": "Token",
+  "EventType": "Failure",
+  "Id": 2001,
+  "ClientId": "mvc",
+  "ClientName": "MVC Client",
+  "Endpoint": "Authorize",
+  "Scopes": "",
+  "Error": "unauthorized_client",
+  "ErrorDescription": "Invalid redirect_uri",
+  "ActivityId": "0HLBTBTV8P0Q5:00000003",
+  "TimeStamp": "2018-02-26T21:25:59Z",
+  "ProcessId": 14824,
+  "LocalIpAddress": "127.0.0.1:17881",
+  "RemoteIpAddress": "::1"
+}
+2018-02-26 13:34:38.224 -08:00 [DBG] Using idsrv as default scheme for authentication
+2018-02-26 13:34:38.248 -08:00 [DBG] Using idsrv as default scheme for sign-in
+2018-02-26 13:34:38.248 -08:00 [DBG] Using idsrv as default scheme for sign-out
+2018-02-26 13:34:38.248 -08:00 [DBG] Using idsrv as default scheme for challenge
+2018-02-26 13:34:38.248 -08:00 [DBG] Using idsrv as default scheme for forbid
+2018-02-26 13:34:38.326 -08:00 [DBG] Starting token cleanup

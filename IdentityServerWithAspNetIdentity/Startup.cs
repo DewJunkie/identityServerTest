@@ -48,7 +48,6 @@ namespace IdentityServerWithAspNetIdentity
             // configure identity server with in-memory stores, keys, clients and scopes
             services.AddIdentityServer()
                     .AddDeveloperSigningCredential()
-                    .AddTestUsers(Config.GetUsers())
                      // this adds the config data from DB (clients, resources)
                     .AddConfigurationStore(options =>
                      {
