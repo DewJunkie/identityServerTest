@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -26,9 +27,12 @@ namespace IdentityServerWithAspNetIdentity
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlite(connectionString));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -42,11 +46,25 @@ namespace IdentityServerWithAspNetIdentity
             // configure identity server with in-memory stores, keys, clients and scopes
             services.AddIdentityServer()
                     .AddDeveloperSigningCredential()
-                    .AddInMemoryPersistedGrants()
-                    .AddInMemoryIdentityResources(Config.GetIdentityResources())
-                    .AddInMemoryApiResources(Config.GetApiResources())
-                    .AddInMemoryClients(Config.GetClients())
-                    .AddAspNetIdentity<ApplicationUser>();
+                    .AddTestUsers(Config.GetUsers())
+                     // this adds the config data from DB (clients, resources)
+                    .AddConfigurationStore(options =>
+                     {
+                         options.ConfigureDbContext = builder =>
+                             builder.UseSqlite(connectionString,
+                                                  sql => sql.MigrationsAssembly(migrationsAssembly));
+                     })
+                     // this adds the operational data from DB (codes, tokens, consents)
+                    .AddOperationalStore(options =>
+                     {
+                         options.ConfigureDbContext = builder =>
+                             builder.UseSqlite(connectionString,
+                                                  sql => sql.MigrationsAssembly(migrationsAssembly));
+
+                         // this enables automatic token cleanup. this is optional.
+                         options.EnableTokenCleanup   = true;
+                         options.TokenCleanupInterval = 30;
+                     });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
