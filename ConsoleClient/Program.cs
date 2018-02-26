@@ -24,7 +24,7 @@ namespace ConsoleClient
         {
             Logger.Information("Started");
 
-            var disco = await DiscoveryClient.GetAsync("https://localhost:44372/");
+            var disco = await DiscoveryClient.GetAsync("https://localhost:5000/");
             if (disco.IsError)
             {
                 Logger.Error("Discovery Error {Error}", disco.Error);
@@ -47,7 +47,7 @@ namespace ConsoleClient
             var client = new HttpClient();
             client.SetBearerToken(tokenResponse.AccessToken);
 
-            var response = await client.GetAsync("https://localhost:44344/identity");
+            var response = await client.GetAsync("https://localhost:5002/identity");
             if (!response.IsSuccessStatusCode)
             {
                 Logger.Error("api error {StatusCode} {Content}", response.StatusCode, await response.Content.ReadAsStringAsync());
